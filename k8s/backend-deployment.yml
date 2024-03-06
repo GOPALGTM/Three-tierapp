@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+  namespace: devtool
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: node-backend
+        image: gopalgtm001/backend-node:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_HOST
+          value: "mysql-svc"
+
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: user
+
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: password
+
+        - name: PORT
+          value: "3306" # Corrected value to string

@@ -1,0 +1,12 @@
+# apiVersion: v1
+# kind: ConfigMap
+# metadata: 
+#   name: database-config
+#   labels:
+#     name: database-config
+#     app: book-management
+#   namespace: development
+# data:
+#   MYSQL_HOST: 34.100.172.182
+#   MYSQL_DATABASE: test
+#   MYSQL_USER: admin
