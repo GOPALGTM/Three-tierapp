@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: node-backend
-        image: gopalgtm001/backend-node:latest
+        image: gopalgtm001/backend-node:v4
         ports:
         - containerPort: 8000
         env:
